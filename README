@@ -1,0 +1,71 @@
+Group Members: Adam Schmidt
+
+
+Frame Format Specification:
+  This frame will move across the wire in a binary format using the same frame
+  format as project 2, with the addition of the CRC field:
+  [DST][SRC][CRC][SIZE/ACK][ACK type][data]
+  DST: Destination of the frame, 1 byte, 1-255
+  SRC: Source of the frame, 1 byte, 1-255
+  CRC: Cyclic redundancy check, 1 byte
+      The CRC field should contain the sum of the byte values of the frame
+      including header and Data, truncated to one byte. This provides a checksum
+      that a destination node can check to ensure that the data arrived intact.
+      When you calculate CRC, you should make CRC as 0x00 (or NULL) at the
+      beginning. After you get the CRC result, fill the result into CRC field. 
+
+
+
+Git Repository Link:
+
+
+Compile and Run Instructions:
+  In order to compile and run this program you must have a working version of
+  python3. I have created a makefile as requested by the assignment, however,
+  python does not use makefiles so I am not sure how well the makefile will run.
+
+  There are two ways to run this program. You can try running the makefile, and
+  if that doesn't work then you can type: python3 main_code.py
+  This will run the program.
+
+
+All Files:
+  - main_code.py: This is the code in python for Project 3 and includes all the
+    functions.
+  - Makefile: This file includes the line for running the python code.
+  - README: This file includes the names of all group members, git link,
+    compile instructions, names of all the files and descriptions, a Checklist
+    and the frame format Specification.
+  - Whatever txt files that are created, example: node2_1.txt
+
+
+Checklist: Note: The checklist below may look weird if window size is too small.
+  Feature:                                                 Status/Description:
+- Project Compiles and Builds without warnings or errors:     Incomplete
+- Switch Class:                                               Incomplete
+- CAS, CSS switches has a frame queue, and reads/writes
+  appropriately:                                              Incomplete
+- CAS, CCCS switches allows multiple connections:             Incomplete
+- CAS, CSS switches flood frames when it doesn't know the
+  destination:                                                Incomplete
+- CAS, CCS switches learn destinations, and doesn't
+  forward packets to any port except the one required:        Incomplete
+- CAS connects to CCS:                                        Incomplete
+- CAS receives local firewall rules:                          Incomplete
+- CAS sends AC=00 back:                                       Incomplete
+- CAS forwards traffic and ACKs properly:                     Incomplete
+- CCS switch opens the firewall file and gets the rules:      Incomplete
+- CCS passes global traffic:                                  Incomplete
+- CCS does the global firewalls:                              Incomplete
+- CCS send AC=00 back:                                        Incomplete
+- CCS Shadow switches run and test properly:                  Incomplete
+- Node Class:                                                 Incomplete
+- Nodes instantiate, and open connection to the switch:       Incomplete
+- Nodes open their input files, and send data to switch:      Incomplete
+- Nodes open their output files, and save data that they
+  received:                                                   Incomplete
+- Node will sometimes drop acknowledgment:                    Incomplete
+- Node will Sometimes create erroneous frame:                 Incomplete
+- Node will sometimes reject traffic:                         Incomplete
+
+Bugs:
