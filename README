@@ -12,11 +12,25 @@ Frame Format Specification:
       including header and Data, truncated to one byte. This provides a checksum
       that a destination node can check to ensure that the data arrived intact.
       When you calculate CRC, you should make CRC as 0x00 (or NULL) at the
-      beginning. After you get the CRC result, fill the result into CRC field. 
-
+      beginning. After you get the CRC result, fill the result into CRC field.
+  SIZE/ACK:
+      In a data frame, this field has the size of the data in bytes, from 1-255
+      When size is 0, the data field is omitted, and this is treated as an ACK.
+  ACK type:
+      It will be filled, only if the frame is an ACK, 1 byte.
+  data: The actual data(1-255 bytes)
+  End of frame
+  ACK type: in this field we have
+      - 00 no response in time out(resend again)
+      - 01 CRC error (resend again)
+      - 10 firewalled (no need to resend)
+      - 11 positive ACK.
 
 
 Git Repository Link:
+  https://github.com/adamponce/cse353_project3.git
+  Note: Please notify me if this link doesn't work and I will do my best to get
+  you one that does work.
 
 
 Compile and Run Instructions:
@@ -42,7 +56,7 @@ All Files:
 Checklist: Note: The checklist below may look weird if window size is too small.
   Feature:                                                 Status/Description:
 - Project Compiles and Builds without warnings or errors:     Incomplete
-- Switch Class:                                               Incomplete
+- Switch Class:                                               Partial
 - CAS, CSS switches has a frame queue, and reads/writes
   appropriately:                                              Incomplete
 - CAS, CCCS switches allows multiple connections:             Incomplete
@@ -59,9 +73,9 @@ Checklist: Note: The checklist below may look weird if window size is too small.
 - CCS does the global firewalls:                              Incomplete
 - CCS send AC=00 back:                                        Incomplete
 - CCS Shadow switches run and test properly:                  Incomplete
-- Node Class:                                                 Incomplete
-- Nodes instantiate, and open connection to the switch:       Incomplete
-- Nodes open their input files, and send data to switch:      Incomplete
+- Node Class:                                                 Partial
+- Nodes instantiate, and open connection to the switch:       Partial
+- Nodes open their input files, and send data to switch:      Partial
 - Nodes open their output files, and save data that they
   received:                                                   Incomplete
 - Node will sometimes drop acknowledgment:                    Incomplete

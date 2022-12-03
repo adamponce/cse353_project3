@@ -147,6 +147,23 @@ Same as the css_switch_class however, it will start traffic forwarding at the
 moment the main CCS switch fails.
 """
 def css_shadow_switch():
+    """
+    I am struggling with what to put in these.
+    """
+    ClientSocket = socket.socket()
+    print('Waiting for connection')
+    try:
+        ClientSocket.connect((host, port))
+    except socket.error as e:
+        print(str(e))
+    Response = ClientSocket.recv(2048)
+    while True:
+        Input = input('Your message: ')
+        ClientSocket.send(str.encode(Input))
+        Response = ClientSocket.recv(2048)
+        print(Response.decode('utf-8'))
+    ClientSocket.close()
+
     return 0
 
 
@@ -158,6 +175,24 @@ based on the network number. Also takes care of forwarding firewalling rules.
 It will read the firewall rules from a file.
 """
 def css_switch_class():
+    global firewall
+    """
+    I am struggling with what to put in these.
+    """
+    ClientSocket = socket.socket()
+    print('Waiting for connection')
+    try:
+        ClientSocket.connect((host, port))
+    except socket.error as e:
+        print(str(e))
+    Response = ClientSocket.recv(2048)
+    while True:
+        Input = input('Your message: ')
+        ClientSocket.send(str.encode(Input))
+        Response = ClientSocket.recv(2048)
+        print(Response.decode('utf-8'))
+    ClientSocket.close()
+
     return 0
 
 
@@ -168,6 +203,23 @@ switches in this function connect to the core switch in order to forward global
 traffic. Function is capable of firewalling and bridging functionalities.
 """
 def cas_switch_class():
+    """
+    I am struggling with what to put in these.
+    """
+    ClientSocket = socket.socket()
+    print('Waiting for connection')
+    try:
+        ClientSocket.connect((host, port))
+    except socket.error as e:
+        print(str(e))
+    Response = ClientSocket.recv(2048)
+    while True:
+        Input = input('Your message: ')
+        ClientSocket.send(str.encode(Input))
+        Response = ClientSocket.recv(2048)
+        print(Response.decode('utf-8'))
+    ClientSocket.close()
+
     return 0
 
 
@@ -183,4 +235,5 @@ def main():
     css_shadow_switch()
     nodes()
 
+firewall
 main()
